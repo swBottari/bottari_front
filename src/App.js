@@ -4,6 +4,7 @@ import { theme } from './style/theme.js';
 
 import { Outlet } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import Header from './pages/header/Header';
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -17,6 +18,7 @@ const Layout = () => {
   return (
     <>
       <Wrapper>
+        <Header />
         <Outlet />
       </Wrapper>
     </>

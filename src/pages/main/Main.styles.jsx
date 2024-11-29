@@ -1,19 +1,35 @@
 import { styled } from 'styled-components';
+import bgImage from '../../assets/images/MainBackground.png';
 
 export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 80vh;
   width: 100%;
-  background-color: #f5f5f5;
+  background-image: url(${bgImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
-export const MainTitle = styled.h1`
-  font-size: 3rem;
-  font-weight: 700;
-  color: #333;
+export const SearchSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  width: 100%;
+`;
+
+export const MiddleSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 100%;
 `;
 
 export const MainDescription = styled.p`
