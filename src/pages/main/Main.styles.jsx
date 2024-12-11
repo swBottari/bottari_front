@@ -28,8 +28,10 @@ export const MiddleSection = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50vh;
+  margin-top: 25vh;
+  height: 150px;
   width: 100%;
+  background-color: orange;
 `;
 
 export const MainDescription = styled.p`
