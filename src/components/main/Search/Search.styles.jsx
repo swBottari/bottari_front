@@ -21,7 +21,7 @@ export const SearchBar = styled.div`
   }
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.form`
   display: flex;
   align-items: center;
   height: 100%;
