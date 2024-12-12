@@ -1,8 +1,10 @@
 // ReserveInputSection.jsx
 import React, { useState } from 'react';
 import * as S from './ReservationInputSection.styles';
+import { useNavigate } from 'react-router-dom';
 
 function ReserveInputSection() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     senderName: '',
     senderPhone: '',
@@ -29,10 +31,10 @@ function ReserveInputSection() {
   };
 
   const handleSubmit = () => {
-    if (!formData.agreement) {
-      alert('유의사항 동의가 필요합니다.');
-      return;
-    }
+    // if (!formData.agreement) {
+    //   alert('유의사항 동의가 필요합니다.');
+    //   return;
+    // }
 
     if (
       !formData.senderName ||
@@ -46,6 +48,7 @@ function ReserveInputSection() {
     }
 
     alert('등록되었습니다.');
+    navigate('/');
 
     // 폼 초기화
     setFormData({
