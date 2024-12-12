@@ -28,6 +28,45 @@ function ReserveInputSection() {
     }));
   };
 
+  const handleSubmit = () => {
+    if (!formData.agreement) {
+      alert('유의사항 동의가 필요합니다.');
+      return;
+    }
+
+    if (
+      !formData.senderName ||
+      !formData.receiverName ||
+      !formData.productType ||
+      !formData.productPrice ||
+      !formData.weight
+    ) {
+      alert('필수 항목을 모두 입력해주세요.');
+      return;
+    }
+
+    alert('등록되었습니다.');
+
+    // 폼 초기화
+    setFormData({
+      senderName: '',
+      senderPhone: '',
+      senderAddress: '',
+      senderDetailAddress: '',
+      receiverName: '',
+      receiverPhone: '',
+      receiverAddress: '',
+      receiverDetailAddress: '',
+      productType: '',
+      productPrice: '',
+      weight: '',
+      quantity: '',
+      notes: '',
+      deposit: 5000,
+      agreement: false,
+    });
+  };
+
   return (
     <S.FormWrapper>
       <S.Section>
@@ -117,7 +156,7 @@ function ReserveInputSection() {
           />
           <span>원</span>
         </div>
-        <S.SubmitButton>등록하기</S.SubmitButton>
+        <S.SubmitButton onClick={handleSubmit}>등록하기</S.SubmitButton>
       </S.Footer>
     </S.FormWrapper>
   );
