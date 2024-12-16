@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './InnerReserveInputSection.styles';
 import { useNavigate } from 'react-router-dom';
+import DeliveryTermsModal from './modal/Modal.jsx';
 
 function InnerReserveInputSection() {
   const navigate = useNavigate();
@@ -90,110 +91,178 @@ function InnerReserveInputSection() {
     }
   };
 
+  //1217 유의사항 모달
+  const [isNoteModalOpen, setIsNoteModalOpen] = useState(false);
+
+  const handleOpenNoteModal = () => {
+    setIsNoteModalOpen(true);
+  };
+
+  const handleCloseNoteModal = () => {
+    setIsNoteModalOpen(false);
+  };
+
   return (
     <S.FormWrapper>
       <S.Section>
         <S.SectionTitle>보내는 분</S.SectionTitle>
-        <S.FormRow>
+        <S.FormRow style={{ display: 'flex', gap: '20px' }}>
           <S.Label required>이름</S.Label>
-          <S.Input name="senderName" value={formData.senderName} onChange={handleChange} />
-        </S.FormRow>
-        <S.FormRow>
+          <div style={{ flex: 1 }}>
+            <S.Input
+              name="senderName"
+              value={formData.senderName}
+              onChange={handleChange}
+              width="350px"
+            />
+          </div>
           <S.Label required>연락처</S.Label>
-          <S.Input name="senderPhone" value={formData.senderPhone} onChange={handleChange} />
+          <div style={{ flex: 1 }}>
+            <S.Input
+              name="senderPhone"
+              value={formData.senderPhone}
+              onChange={handleChange}
+              width="350px"
+            />
+          </div>
         </S.FormRow>
         <S.FormRow>
           <S.Label required>주소</S.Label>
           <div style={{ width: '100%' }}>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <S.Input width="200px" />
+            <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+              <S.Input width="130px" />
+              <S.Label style={{ left: '50%', transform: 'translateX(45%)' }}> - </S.Label>
+              <S.Input width="130px" />
               <S.SearchButton>주소 검색</S.SearchButton>
             </div>
-            <S.AddressInput placeholder="상세주소" />
+            <S.AddressInput />
           </div>
+        </S.FormRow>
+        <S.FormRow>
+          <S.Label required>상세 주소</S.Label>
+          <S.AddressInput placeholder="상세주소" />
+          <span></span>
         </S.FormRow>
       </S.Section>
 
       <S.Section>
         <S.SectionTitle>받는 분</S.SectionTitle>
-        <S.FormRow>
+        <S.FormRow style={{ display: 'flex', gap: '20px' }}>
           <S.Label required>이름</S.Label>
-          <S.Input name="receiverName" value={formData.receiverName} onChange={handleChange} />
-        </S.FormRow>
-        <S.FormRow>
+          <div style={{ flex: 1 }}>
+            <S.Input
+              name="receiverName"
+              value={formData.receiverName}
+              onChange={handleChange}
+              width="350px"
+            />
+          </div>
           <S.Label required>연락처</S.Label>
-          <S.Input name="receiverPhone" value={formData.receiverPhone} onChange={handleChange} />
+          <div style={{ flex: 1 }}>
+            <S.Input
+              name="receiverPhone"
+              value={formData.receiverPhone}
+              onChange={handleChange}
+              width="350px"
+            />
+          </div>
         </S.FormRow>
         <S.FormRow>
           <S.Label required>주소</S.Label>
           <div style={{ width: '100%' }}>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <S.Input width="200px" />
+            <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+              <S.Input width="130px" />
+              <S.Label style={{ left: '50%', transform: 'translateX(45%)' }}> - </S.Label>
+              <S.Input width="130px" />
               <S.SearchButton>주소 검색</S.SearchButton>
             </div>
-            <S.AddressInput placeholder="상세주소" />
+            <S.AddressInput />
+            <span></span>
           </div>
+        </S.FormRow>
+        <S.FormRow>
+          <S.Label required>상세 주소</S.Label>
+          <S.AddressInput placeholder="상세주소" />
+          <span></span>
         </S.FormRow>
       </S.Section>
 
       <S.Section>
-        <S.SectionTitle>물품 정보</S.SectionTitle>
-        <S.FormRow>
-          <S.Label required>상품 종류</S.Label>
-          <S.Select name="productType" value={formData.productType} onChange={handleChange}>
-            <option value="">물품 선택</option>
-            <option value="electronics">전자제품</option>
-            <option value="clothes">의류</option>
-          </S.Select>
-        </S.FormRow>
-        <S.FormRow>
-          <S.Label required>상품 가격</S.Label>
-          <S.Input
-            type="number"
-            name="productPrice"
-            value={formData.productPrice}
-            onChange={handleChange}
-            placeholder="물품 가액"
-          />
-          <span>원</span>
-        </S.FormRow>
-        <S.FormRow>
-          <S.Label required>무게</S.Label>
-          <S.Input
-            type="number"
-            name="weight"
-            value={formData.weight}
-            onChange={handleChange}
-            placeholder="물품 무게"
-          />
-          <span>kg</span>
-        </S.FormRow>
-        <S.FormRow>
-          <S.Label required>수량</S.Label>
-          <S.Input name="quantity" value={formData.quantity} onChange={handleChange} />
-        </S.FormRow>
-        <S.FormRow>
-          <S.Label>특이사항/주의사항</S.Label>
-          <S.TextArea name="notes" value={formData.notes} onChange={handleChange} />
-        </S.FormRow>
+        <S.SectionTitle>물품 정보</S.SectionTitle> {/* 섹션 제목은 상단에 위치 */}
+        {/* 두 div는 한 줄에 배치 */}
+        <div style={{ display: 'flex', gap: '50px', width: '100%' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+            <S.FormRow>
+              <S.Label required>상품 종류</S.Label>
+              <S.Select name="productType" value={formData.productType} onChange={handleChange}>
+                <option value="">물품 선택</option>
+                <option value="electronics">전자제품</option>
+                <option value="clothes">의류</option>
+              </S.Select>
+            </S.FormRow>
+            <S.FormRow>
+              <S.Label required>상품 가격</S.Label>
+              <S.Input
+                type="number"
+                name="productPrice"
+                value={formData.productPrice}
+                onChange={handleChange}
+                placeholder="물품 가액"
+              />
+              <span>원</span>
+            </S.FormRow>
+            <S.FormRow>
+              <S.Label required>무게</S.Label>
+              <S.Input
+                type="number"
+                name="weight"
+                value={formData.weight}
+                onChange={handleChange}
+                placeholder="물품 무게"
+              />
+              <span>kg</span>
+            </S.FormRow>
+            <S.FormRow>
+              <S.Label required>수량</S.Label>
+              <S.Input
+                type="number"
+                name="quantity"
+                value={formData.quantity}
+                onChange={handleChange}
+              />
+              <span></span>
+              <span></span>
+            </S.FormRow>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1.5 }}>
+            <S.FormRow>
+              <S.Label>특이사항/주의사항</S.Label>
+              <S.TextArea name="notes" value={formData.notes} onChange={handleChange} />
+            </S.FormRow>
+            <div style={{ alignSelf: 'flex-end' }}>
+              <S.DocButton onClick={handleOpenModal}>필요서류등록</S.DocButton>
+            </div>
+          </div>
+        </div>
       </S.Section>
 
       <S.Footer>
+        <S.NoteButton onClick={handleSubmit}>유의사항 읽기</S.NoteButton>
         <S.CheckboxWrapper>
-          <S.CheckboxInput name="agreement" checked={formData.agreement} onChange={handleChange} />
-          <div>픽업 예약 유의사항 안내를 확인하였으며 이에 동의합니다.</div>
+          <S.CheckboxInput type="checkbox" />
+          <span>픽업 예약 유의사항 안내를 확인하였으며 이에 동의합니다.</span>
         </S.CheckboxWrapper>
         <div>
           <span>예상운임</span>
           <S.Input
             type="text"
-            value="5000"
+            value={formData.deposit}
             readOnly
             style={{ width: '100px', marginLeft: '10px', marginRight: '5px' }}
           />
           <span>원</span>
         </div>
-        <S.DocButton onClick={handleOpenModal}>필요서류등록</S.DocButton>
         <S.SubmitButton onClick={handleSubmit}>등록하기</S.SubmitButton>
       </S.Footer>
       {/* 1216 파일업로드모달추가 */}
@@ -217,6 +286,8 @@ function InnerReserveInputSection() {
           </ul>
         </div>
       )}
+      {/* 유의사항 모달 */}
+      {isNoteModalOpen && <DeliveryTermsModal onClose={handleCloseNoteModal} />}
     </S.FormWrapper>
   );
 }

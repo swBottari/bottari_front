@@ -45,7 +45,7 @@ export const Input = styled.input`
 `;
 
 export const AddressInput = styled(Input)`
-  width: 100%;
+  width: 98%;
   margin-top: 8px;
 `;
 
@@ -66,7 +66,7 @@ export const Select = styled.select`
 `;
 
 export const TextArea = styled.textarea`
-  width: 100%;
+  width: 70%;
   height: 120px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -114,6 +114,19 @@ export const SubmitButton = styled.button`
 `;
 
 export const DocButton = styled.button`
+  background-color: #ffdd6e;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative; /* 정렬을 위한 기준 */
+  margin: 10px 10px; /* 외부 여백 (아래와 옆 간격 추가) */
+  align-self: flex-end;
+`;
+
+export const NoteButton = styled.button`
   background-color: #ffdd6e;
   color: black;
   border: none;
