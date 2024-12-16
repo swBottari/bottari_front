@@ -72,9 +72,8 @@ function OutReserveInputSection() {
       <S.Section>
         <S.SectionTitle>물품 정보</S.SectionTitle>
 
-        {/* 첫 번째 그룹: 상품 종류, 상품 가격, 무게 */}
         <S.FormRow style={{ display: 'flex', gap: '20px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
             <S.Label required>상품 종류</S.Label>
             <S.Select name="productType" value={formData.productType} onChange={handleChange}>
               <option value="">물품 선택</option>
@@ -83,7 +82,7 @@ function OutReserveInputSection() {
             </S.Select>
           </div>
 
-          <div style={{ flex: 1 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
             <S.Label required>상품 가격</S.Label>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <S.Input
@@ -97,7 +96,7 @@ function OutReserveInputSection() {
             </div>
           </div>
 
-          <div style={{ flex: 1 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
             <S.Label required>무게</S.Label>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <S.Input
@@ -112,14 +111,13 @@ function OutReserveInputSection() {
           </div>
         </S.FormRow>
 
-        {/* 두 번째 그룹: 통관번호, 수량, 특이사항 */}
         <S.FormRow style={{ display: 'flex', gap: '20px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
             <S.Label required>통관번호</S.Label>
             <S.Input name="pcc" value={formData.pcc} onChange={handleChange} />
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
             <S.Label required>수량</S.Label>
             <S.Input
               type="number"
@@ -129,7 +127,7 @@ function OutReserveInputSection() {
             />
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
             <S.Label>특이사항</S.Label>
             <S.Input
               type="text"
