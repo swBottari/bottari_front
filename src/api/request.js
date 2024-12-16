@@ -17,11 +17,10 @@ export const sendRequest = async (instance, method, url, data = {}) => {
       `error_status_text: `,
       error.response.statusText
     );
-    window.location.href = '/error';
+    //window.location.href = '/error';
     throw error;
   }
 };
-s;
 
 // 동적 URL 생성
 export const createUrl = (path, params = {}) => {

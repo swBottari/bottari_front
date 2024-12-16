@@ -9,9 +9,15 @@ const defaultInstance = axios.create({
   baseURL: BASE_URL,
 });
 
-const exampleInstance = axios.create(defaultInstance.defaults);
-exampleInstance.defaults.baseURL += '/example';
+const userInstance = axios.create(defaultInstance.defaults);
+userInstance.defaults.baseURL += '/user';
 
-applyInterceptors(exampleInstance);
+const reserveInstance = axios.create(defaultInstance.defaults);
+reserveInstance.defaults.baseURL += '/reservation';
 
-export { defaultInstance, exampleInstance };
+const mypageInstance = axios.create(defaultInstance.defaults);
+reserveInstance.defaults.baseURL += '/mypage';
+
+//applyInterceptors(exampleInstance);
+
+export { defaultInstance, userInstance, reserveInstance, mypageInstance };

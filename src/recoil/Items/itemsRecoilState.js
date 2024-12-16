@@ -12,3 +12,8 @@ export const reserveState = atom({
     boundaryState: '',
   },
 });
+
+export const reservePrice = atom({
+  key: 'reservePrice',
+  default: '',
+});

@@ -1,18 +1,51 @@
-import { useSetRecoilState } from 'recoil';
-import { exampleState } from '../../recoil/user/userRecoilState';
 import { sendRequest } from '../request';
-import { exampleInstance } from '../instance';
+import { userInstance } from '../instance';
 
-export const useExampleHook = () => {
-  const setExampleState = useSetRecoilState(exampleState);
-  const exampleGet = async exampleData => {
-    const response = await sendRequest(exampleInstance, 'get', '/', exampleData);
-    setExampleState(response.data);
-    //return 은 단지 잘 왔나 확인할 때 쓰는 용도 안 쓸 때도 있음
+export const useUserHook = () => {
+  const loginUser = async formData => {
+    const response = await sendRequest(userInstance, 'post', '/login', {
+      id: formData.id,
+      pw: formData.password,
+    });
+
+    localStorage.setItem('name', response.data.responseDto.name);
+
+    return response;
+  };
+
+  const signUpUser = async formData => {
+    const response = await sendRequest(userInstance, 'post', '/signup', {
+      id: formData.id,
+      name: formData.name,
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+      phone: formData.phone,
+      address: formData.address,
+      email: formData.email,
+      termsAgreed: true,
+      privacyAgreed: true,
+    });
+
+    return response;
+  };
+
+  const refacUser = async formData => {
+    const response = await sendRequest(userInstance, 'patch', '/signup', {
+      id: formData.id,
+      name: formData.name,
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+      phone: formData.phone,
+      address: formData.address,
+      email: formData.email,
+    });
+
     return response;
   };
 
   return {
-    exampleGet,
+    loginUser,
+    signUpUser,
+    refacUser,
   };
 };
