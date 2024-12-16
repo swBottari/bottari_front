@@ -5,7 +5,7 @@ import SingUpInputSection from '../../components/signup/SingUpInputSection';
 function SignUp() {
   return (
     <S.Container>
-      <S.Title>회윈정보 입력</S.Title>
+      <S.Title>회원정보 입력</S.Title>
       <SingUpInputSection />
     </S.Container>
   );

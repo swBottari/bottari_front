@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './SignUpInputSection.styles';
 import { useNavigate } from 'react-router-dom';
+import logoImage from '../../assets/images/BottariLogo.svg';
 
 function SignUpInputSection() {
   const navigate = useNavigate();
@@ -60,66 +61,72 @@ function SignUpInputSection() {
 
   return (
     <S.FormContainer>
-      <S.Form>
-        <S.InputGroup>
-          <S.Label>아이디</S.Label>
-          <S.Input type="text" name="id" value={formData.id} onChange={handleChange} />
-        </S.InputGroup>
+      <S.LeftSection>
+        <S.Form>
+          <S.InputGroup>
+            <S.Label>아이디</S.Label>
+            <S.Input type="text" name="id" value={formData.id} onChange={handleChange} />
+          </S.InputGroup>
 
-        <S.InputGroup>
-          <S.Label>이름</S.Label>
-          <S.Input type="text" name="name" value={formData.name} onChange={handleChange} />
-        </S.InputGroup>
+          <S.InputGroup>
+            <S.Label>이름</S.Label>
+            <S.Input type="text" name="name" value={formData.name} onChange={handleChange} />
+          </S.InputGroup>
 
-        <S.InputGroup>
-          <S.Label>비밀번호</S.Label>
-          <S.Input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </S.InputGroup>
+          <S.InputGroup>
+            <S.Label>비밀번호</S.Label>
+            <S.Input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </S.InputGroup>
 
-        <S.InputGroup>
-          <S.Label>비밀번호 확인</S.Label>
-          <S.Input
-            type="password"
-            name="passwordConfirm"
-            value={formData.passwordConfirm}
-            onChange={handleChange}
-          />
-        </S.InputGroup>
+          <S.InputGroup>
+            <S.Label>비밀번호 확인</S.Label>
+            <S.Input
+              type="password"
+              name="passwordConfirm"
+              value={formData.passwordConfirm}
+              onChange={handleChange}
+            />
+          </S.InputGroup>
 
-        <S.InputGroup>
-          <S.Label>휴대폰번호</S.Label>
-          <S.Input
-            type="tel"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-          />
-        </S.InputGroup>
+          <S.InputGroup>
+            <S.Label>휴대폰번호</S.Label>
+            <S.Input
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+            />
+          </S.InputGroup>
 
-        <S.InputGroup>
-          <S.Label>주소</S.Label>
-          <S.Input type="text" name="address" value={formData.address} onChange={handleChange} />
-        </S.InputGroup>
+          <S.InputGroup>
+            <S.Label>주소</S.Label>
+            <S.Input type="text" name="address" value={formData.address} onChange={handleChange} />
+          </S.InputGroup>
 
-        <S.InputGroup>
-          <S.Label>이메일</S.Label>
-          <S.Input type="email" name="email" value={formData.email} onChange={handleChange} />
-        </S.InputGroup>
+          <S.InputGroup>
+            <S.Label>이메일</S.Label>
+            <S.Input type="email" name="email" value={formData.email} onChange={handleChange} />
+          </S.InputGroup>
 
-        <S.ButtonGroup>
-          <S.ResetButton type="button" onClick={handleReset}>
-            다시 쓰기
-          </S.ResetButton>
-          <S.SubmitButton type="submit" onClick={handleSubmit}>
-            회원가입
-          </S.SubmitButton>
-        </S.ButtonGroup>
-      </S.Form>
+          <S.ButtonGroup>
+            <S.ResetButton type="button" onClick={handleReset}>
+              다시 쓰기
+            </S.ResetButton>
+            <S.SubmitButton type="submit" onClick={handleSubmit}>
+              회원가입
+            </S.SubmitButton>
+          </S.ButtonGroup>
+        </S.Form>
+      </S.LeftSection>
+      {/* 오른쪽 섹션 */}
+      <S.RightSection>
+        <S.LogoImage src={logoImage} alt="Bottari Logo" />
+      </S.RightSection>
     </S.FormContainer>
   );
 }

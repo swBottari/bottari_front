@@ -5,7 +5,7 @@ import LoginInputSection from '../../components/login/LoginInputSection';
 function Login() {
   return (
     <S.Container>
-      <S.Title>로그인</S.Title>
+      <S.PageTitle>로그인</S.PageTitle>
       <LoginInputSection />
     </S.Container>
   );
