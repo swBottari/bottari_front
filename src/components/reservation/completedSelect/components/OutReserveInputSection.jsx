@@ -45,7 +45,26 @@ function OutReserveInputSection() {
     alert('등록되었습니다.');
     navigate('/');
   };
+  //1216 첨부파일추가모달
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFileUpload = event => {
+    const file = event.target.files[0];
+    if (file) {
+      alert(`파일 "${file.name}"이 업로드되었습니다.`);
+      setUploadedFiles(prev => [...prev, file.name]);
+      setIsModalOpen(false); // 파일 업로드 후 모달 닫기
+    }
+  };
   return (
     <S.FormWrapper>
       <S.Section>
@@ -65,12 +84,19 @@ function OutReserveInputSection() {
             name="productPrice"
             value={formData.productPrice}
             onChange={handleChange}
+            placeholder="물품 가액"
           />
           <span>원</span>
         </S.FormRow>
         <S.FormRow>
           <S.Label required>무게</S.Label>
-          <S.Input type="number" name="weight" value={formData.weight} onChange={handleChange} />
+          <S.Input
+            type="number"
+            name="weight"
+            value={formData.weight}
+            onChange={handleChange}
+            placeholder="물품 무게"
+          />
           <span>kg</span>
         </S.FormRow>
         <S.FormRow>
@@ -89,6 +115,10 @@ function OutReserveInputSection() {
         <S.FormRow>
           <S.Label required>이름</S.Label>
           <S.Input name="senderName" value={formData.senderName} onChange={handleChange} />
+        </S.FormRow>
+        <S.FormRow>
+          <S.Label required>연락처</S.Label>
+          <S.Input name="senderPhone" value={formData.senderPhone} onChange={handleChange} />
         </S.FormRow>
         <S.FormRow>
           <S.Label required>주소</S.Label>
@@ -169,8 +199,30 @@ function OutReserveInputSection() {
           />
           <span>원</span>
         </div>
+        <S.DocButton onClick={handleOpenModal}>필요서류등록</S.DocButton>
         <S.SubmitButton onClick={handleSubmit}>등록하기</S.SubmitButton>
       </S.Footer>
+      {/* 1216 파일업로드모달추가 */}
+      {isModalOpen && (
+        <S.ModalOverlay>
+          <S.ModalContent>
+            <h3>파일 업로드</h3>
+            <S.FileInput type="file" onChange={handleFileUpload} />
+            <S.CloseButton onClick={handleCloseModal}>닫기</S.CloseButton>
+          </S.ModalContent>
+        </S.ModalOverlay>
+      )}
+      {/* 업로드된 파일명 표시  **1216 실제 업로드x */}
+      {uploadedFiles.length > 0 && (
+        <div style={{ marginTop: '10px', textAlign: 'left' }}>
+          <strong>업로드된 파일</strong>
+          <ul style={{ paddingLeft: '20px', marginTop: '5px' }}>
+            {uploadedFiles.map((fileName, index) => (
+              <li key={index}>{fileName}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </S.FormWrapper>
   );
 }
