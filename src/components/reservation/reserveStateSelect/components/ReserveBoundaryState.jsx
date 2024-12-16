@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { reserveState } from '../../../recoil/Items/itemsRecoilState';
-import * as S from './ReserveUserSelect.styles';
+import { reserveState } from '../../../../recoil/Items/itemsRecoilState';
+import * as S from './ReserveBoundaryState.styles';
 
 function ReserveBoundaryState() {
   const [reserve, setReserve] = useRecoilState(reserveState);

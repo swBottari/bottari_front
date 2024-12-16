@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { reserveState } from '../../../recoil/Items/itemsRecoilState';
+import { reserveState } from '../../../../recoil/Items/itemsRecoilState';
 import * as S from './ReserveUserSelect.styles';
 
 function ReserveUserSelect() {

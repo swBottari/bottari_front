@@ -1,10 +1,10 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { reserveState } from '../../recoil/Items/itemsRecoilState';
+import { reserveState } from '../../../recoil/Items/itemsRecoilState';
 import * as S from './ReserveStateSelect.styles';
 import ReserveUserSelect from './components/ReserveUserSelect';
 import ReserveBoundaryState from './components/ReserveBoundaryState';
-import CompletedReservation from './components/CompletedReservation';
+import CompletedSelectReservation from '../completedSelect/CompletedSelectReservation';
 
 function ReserveStateSelect() {
   const reserveValue = useRecoilValue(reserveState);
@@ -13,7 +13,7 @@ function ReserveStateSelect() {
     <S.Container>
       {!reserveValue.userState && <ReserveUserSelect />}
       {reserveValue.userState && !reserveValue.boundaryState && <ReserveBoundaryState />}
-      {reserveValue.userState && reserveValue.boundaryState && <CompletedReservation />}
+      {reserveValue.userState && reserveValue.boundaryState && <CompletedSelectReservation />}
     </S.Container>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './Reservation.styles';
-import ReserveStateSelect from '../../components/reservation/ReserveStateSelect';
+import ReserveStateSelect from '../../components/reservation/reserveStateSelect/ReserveStateSelect';
 
 function Reservation() {
   return (

@@ -1,9 +1,8 @@
-// ReserveInputSection.jsx
 import React, { useState } from 'react';
-import * as S from './ReservationInputSection.styles';
+import * as S from './InnerReserveInputSection.styles';
 import { useNavigate } from 'react-router-dom';
 
-function ReserveInputSection() {
+function InnerReserveInputSection() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     senderName: '',
@@ -141,12 +140,7 @@ function ReserveInputSection() {
 
       <S.Footer>
         <S.CheckboxWrapper>
-          <input
-            type="checkbox"
-            name="agreement"
-            checked={formData.agreement}
-            onChange={handleChange}
-          />
+          <S.CheckboxInput name="agreement" checked={formData.agreement} onChange={handleChange} />
           <span>픽업 예약 유의사항 안내를 확인하였으며 이에 동의합니다.</span>
         </S.CheckboxWrapper>
         <div>
@@ -165,4 +159,4 @@ function ReserveInputSection() {
   );
 }
 
-export default ReserveInputSection;
+export default InnerReserveInputSection;

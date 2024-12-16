@@ -88,6 +88,11 @@ export const CheckboxWrapper = styled.div`
   gap: 8px;
 `;
 
+export const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
+  margin-right: 8px;
+  cursor: pointer;
+`;
+
 export const SubmitButton = styled.button`
   background-color: #ff6b01;
   color: white;
