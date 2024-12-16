@@ -1,11 +1,50 @@
 import { styled } from 'styled-components';
+import bgImage from '../../assets/images/MainBackground.png';
 
-export const Example = styled.div`
+export const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 80vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
+export const TopImg = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 20vh;
   width: 100%;
-  background-color: #f5f5f5;
+  background-image: url(${bgImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
+export const Title = styled.div`
+  font-weight: bold;
+  font-size: xxx-large;
+`;
+
+export const MiddleSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 100%;
+`;
+
+export const ReserveListSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 `;
