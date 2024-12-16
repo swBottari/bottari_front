@@ -40,6 +40,7 @@ export const Input = styled.input`
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: white;
   width: ${props => props.width || '100%'};
 `;
 
@@ -66,7 +67,6 @@ export const Select = styled.select`
 
 export const TextArea = styled.textarea`
   width: 100%;
-  height: 120px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -80,19 +80,27 @@ export const Footer = styled.div`
   margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid #ccc;
+  flex-wrap: wrap; /* 내용들이 공간에 맞게 줄바꿈 될 수 있도록 함 */
+  gap: 10px; /* 각 요소 사이의 간격 추가 */
 `;
 
 export const CheckboxWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap; /* 항목들이 화면 너비에 맞게 줄바꿈 되도록 함 */
+  margin-bottom: 10px; /* 아래 여백 추가 */
 `;
 
 export const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
   margin-right: 8px;
   cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  background-color: white;
+  border-radius: 4px;
 `;
-
 export const SubmitButton = styled.button`
   background-color: #ff6b01;
   color: white;
@@ -101,4 +109,68 @@ export const SubmitButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+`;
+
+export const DocButton = styled.button`
+  background-color: #ffdd6e;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative; /* 정렬을 위한 기준 */
+  margin: 10px 10px; /* 외부 여백 (아래와 옆 간격 추가) */
+  align-self: flex-end;
+`;
+
+export const NoteButton = styled.button`
+  background-color: #ffdd6e;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative; /* 정렬을 위한 기준 */
+  margin: 10px 10px; /* 외부 여백 (아래와 옆 간격 추가) */
+  align-self: flex-end;
+`;
+
+//필요서류등록모달
+// 모달 오버레이
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+// 모달 컨텐츠
+export const ModalContent = styled.div`
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+`;
+
+export const FileInput = styled.input`
+  margin-top: 10px;
+  margin-bottom: 20px;
+`;
+
+export const CloseButton = styled.button`
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
 `;
