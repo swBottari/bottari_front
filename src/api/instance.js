@@ -10,7 +10,7 @@ const defaultInstance = axios.create({
 });
 
 const userInstance = axios.create(defaultInstance.defaults);
-userInstance.defaults.baseURL += '/user';
+userInstance.defaults.baseURL += '/users';
 
 const reserveInstance = axios.create(defaultInstance.defaults);
 reserveInstance.defaults.baseURL += '/reservation';

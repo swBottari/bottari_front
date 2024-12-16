@@ -30,7 +30,7 @@ export const useUserHook = () => {
   };
 
   const refacUser = async formData => {
-    const response = await sendRequest(userInstance, 'patch', '/signup', {
+    const response = await sendRequest(userInstance, 'patch', '/modify', {
       id: formData.id,
       name: formData.name,
       password: formData.password,
