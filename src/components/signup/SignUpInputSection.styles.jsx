@@ -1,78 +1,60 @@
 import { styled } from 'styled-components';
 
-// 전체 컨테이너 (3:1 비율로 나눔)
-export const PageContainer = styled.div`
+export const FormContainer = styled.div`
   display: flex;
-  flex-direction: col; /* 가로 방향으로 배치 */
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100vh;
-  background: url('../../assets/images/background.jpg') no-repeat center center / cover;
+  background-image: url('../../assets/images/background.png');
+  background-size: cover;
+  background-position: center;
 `;
 
-// 왼쪽 섹션
-export const LeftSection = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+export const FormWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 왼쪽 2칸, 오른쪽 1칸 비율 */
+  justify-content: space-between;
   align-items: center;
-`;
-
-// 오른쪽 섹션
-export const RightSection = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-// 중앙 구분선
-export const Divider = styled.div`
-  width: 2px;
-  height: 60%;
-  background-color: #ddd;
-  align-self: center;
-`;
-
-// 로고 이미지
-export const LogoImage = styled.img`
-  width: 150px;
-  height: 150px;
-`;
-
-// 폼 컨테이너
-export const FormContainer = styled.div`
-  width: 100%;
-  max-width: 500px;
-  padding: 30px;
+  width: 90%;
+  position: relative; /* ButtonGroup 위치 기준 */
+  max-width: 800px; /* 폼의 최대 너비 */
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
 `;
 
-export const Form = styled.form`
+export const LeftSection = styled.div`
+  flex: 7; /* 왼쪽 비율 */
   display: flex;
   flex-direction: column;
   gap: 15px;
 `;
 
-// 입력 필드와 레이블
+export const RightSection = styled.div`
+  flex: 4; /* 오른쪽 비율 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const InputGroup = styled.div`
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 10px; /* 레이블과 인풋 사이 간격 */
+  margin-bottom: 10px; /* 각 입력 그룹 간의 간격 */
 `;
 
 export const Label = styled.label`
-  width: 120px;
+  width: 100px; /* 레이블 너비 고정 */
+  text-align: right; /* 오른쪽 정렬 */
   font-size: 14px;
-  color: #666;
-  text-align: right;
+  color: #333;
 `;
 
 export const Input = styled.input`
-  flex: 1;
+  flex: 1; /* 나머지 공간을 채움 */
   padding: 8px 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -86,33 +68,41 @@ export const Input = styled.input`
 
 export const ButtonGroup = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  justify-content: center; /* 수평 가운데 정렬 */
+  grid-column: span 2; /* 버튼 그룹을 전체 너비에 걸쳐 배치 */
+  gap: 10px; /* 버튼 사이 간격 */
+  margin-top: 20px; /* 버튼 그룹 위 여백 */
+  width: 100%; /* 부모 너비를 꽉 채우기 */
 `;
 
-export const ResetButton = styled.button`
-  background-color: #ff6b00;
-  color: white;
+export const Button = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
+  font-size: 14px;
   cursor: pointer;
+  transition: background-color 0.2s;
+`;
+
+export const ResetButton = styled(Button)`
+  background-color: #ff6b00;
+  color: white;
 
   &:hover {
     background-color: #ff8533;
   }
 `;
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled(Button)`
   background-color: #663300;
   color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 
   &:hover {
     background-color: #804000;
   }
+`;
+
+export const LogoImage = styled.img`
+  width: 150px;
+  height: auto;
 `;
