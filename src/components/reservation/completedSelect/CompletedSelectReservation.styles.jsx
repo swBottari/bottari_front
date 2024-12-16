@@ -14,6 +14,7 @@ export const Container = styled.div`
   width: 100%;
 `;
 
+//1216김효정 이미지 투명도 추가
 export const TopImg = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,10 +22,30 @@ export const TopImg = styled.div`
   justify-content: center;
   height: 150px;
   width: 100%;
-  background-image: url(${bgImage});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative; /* ::before 가상 요소를 사용하기 위해 position을 relative로 설정 */
+
+  /* 배경 이미지 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(${bgImage}); /* 배경 이미지 설정 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5; /* 원하는 투명도 값 설정 */
+    z-index: -1; /* 텍스트보다 뒤에 배경 이미지가 오도록 설정 */
+  }
+
+  /* 텍스트 스타일 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* 텍스트가 이미지 위에 표시되도록 설정 */
 `;
 
 export const Title = styled.div`
