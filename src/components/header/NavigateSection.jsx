@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './NavigateSection.styles';
 import NavigationButton from './components/NavigationButton';
 
 function NavigateSection() {
-  const navList = ['배송', '예약', '마이페이지'];
+  const [navList, setNavList] = useState([]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      setNavList(['배송', '예약', '마이페이지']);
+    } else {
+      setNavList(['로그인', '회원가입']);
+    }
+  }, []);
 
   return (
     <S.Container>
