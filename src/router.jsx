@@ -8,6 +8,7 @@ import Reservation from './pages/reservation/Reservation';
 import MyPage from './pages/mypage/MyPage';
 import About from './pages/about/About';
 import Tracking from './pages/tracking/Tracking';
+import Inquiry from './pages/inquiry/Inquiry';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: 'about',
         element: <About />,
+      },
+      {
+        path: 'inquiry',
+        element: <Inquiry />,
       },
     ],
     errorElement: <NotFoundError />,

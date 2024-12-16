@@ -19,6 +19,13 @@ function NavigationButton({ nav }) {
       case '로그인':
         navigate('/login');
         break;
+      case '문의':
+        navigate('/inquiry');
+        break;
+      case '로그아웃':
+        localStorage.removeItem('userName');
+        window.location.reload();
+        break;
       case '회원가입':
         navigate('/signup');
         break;

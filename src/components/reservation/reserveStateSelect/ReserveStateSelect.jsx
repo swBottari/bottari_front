@@ -11,7 +11,6 @@ function ReserveStateSelect() {
 
   return (
     <S.Container>
-      {/*1216김효정 조건부로 img 표시, completedSelect 페이지에서 reserveStateSelect의 topImg 안 띄움*/}
       {!reserveValue.userState || !reserveValue.boundaryState ? (
         <S.TopImg>
           <S.Title>택배픽업예약</S.Title>

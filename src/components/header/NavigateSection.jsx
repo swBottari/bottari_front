@@ -6,9 +6,9 @@ function NavigateSection() {
   const [navList, setNavList] = useState([]);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem('userName');
     if (accessToken) {
-      setNavList(['배송', '예약', '마이페이지']);
+      setNavList(['배송', '예약', '마이페이지', '문의', '로그아웃']);
     } else {
       setNavList(['로그인', '회원가입']);
     }
