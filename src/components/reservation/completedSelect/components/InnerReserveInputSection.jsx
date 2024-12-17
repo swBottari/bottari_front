@@ -5,6 +5,8 @@ import DeliveryTermsModal from './modal/Modal.jsx';
 
 function InnerReserveInputSection() {
   const navigate = useNavigate();
+  const [deposit, setDeposit] = useState('');
+
   const [formData, setFormData] = useState({
     senderName: '',
     senderPhone: '',
@@ -19,7 +21,7 @@ function InnerReserveInputSection() {
     weight: '',
     quantity: '',
     notes: '',
-    deposit: 5000,
+    deposit: '',
   });
 
   const handleChange = e => {
@@ -65,13 +67,13 @@ function InnerReserveInputSection() {
       weight: '',
       quantity: '',
       notes: '',
-      deposit: 5000,
+      deposit: '',
       agreement: false,
     });
   };
 
-  //1216 첨부파일추가모달
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const handleOpenModal = () => {
@@ -80,6 +82,10 @@ function InnerReserveInputSection() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleCheckboxChange = event => {
+    setIsChecked(event.target.checked);
   };
 
   const handleFileUpload = event => {
@@ -91,7 +97,6 @@ function InnerReserveInputSection() {
     }
   };
 
-  //1217 유의사항 모달
   const [isNoteModalOpen, setIsNoteModalOpen] = useState(false);
 
   const handleOpenNoteModal = () => {
@@ -248,16 +253,16 @@ function InnerReserveInputSection() {
       </S.Section>
 
       <S.Footer>
-        <S.NoteButton onClick={handleSubmit}>유의사항 읽기</S.NoteButton>
+        <S.NoteButton onClick={handleOpenNoteModal}>유의사항 읽기</S.NoteButton>
         <S.CheckboxWrapper>
-          <S.CheckboxInput type="checkbox" />
+          <S.CheckboxInput checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
           <span>픽업 예약 유의사항 안내를 확인하였으며 이에 동의합니다.</span>
         </S.CheckboxWrapper>
         <div>
           <span>예상운임</span>
           <S.Input
             type="text"
-            value={formData.deposit}
+            value={deposit}
             readOnly
             style={{ width: '100px', marginLeft: '10px', marginRight: '5px' }}
           />
@@ -265,7 +270,6 @@ function InnerReserveInputSection() {
         </div>
         <S.SubmitButton onClick={handleSubmit}>등록하기</S.SubmitButton>
       </S.Footer>
-      {/* 1216 파일업로드모달추가 */}
       {isModalOpen && (
         <S.ModalOverlay>
           <S.ModalContent>
@@ -275,7 +279,6 @@ function InnerReserveInputSection() {
           </S.ModalContent>
         </S.ModalOverlay>
       )}
-      {/* 업로드된 파일명 표시  **1216 실제 업로드x */}
       {uploadedFiles.length > 0 && (
         <div style={{ marginTop: '10px', textAlign: 'left' }}>
           <strong>업로드된 파일</strong>
@@ -286,8 +289,15 @@ function InnerReserveInputSection() {
           </ul>
         </div>
       )}
-      {/* 유의사항 모달 */}
-      {isNoteModalOpen && <DeliveryTermsModal onClose={handleCloseNoteModal} />}
+      {isNoteModalOpen && (
+        <DeliveryTermsModal
+          isOpen={isNoteModalOpen}
+          onClose={handleCloseNoteModal}
+          setDeposit={setDeposit}
+          isChecked={isChecked}
+          onCheckboxChange={handleCheckboxChange}
+        />
+      )}
     </S.FormWrapper>
   );
 }

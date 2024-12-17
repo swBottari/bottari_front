@@ -101,6 +101,30 @@ export const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
   border: 2px solid #ccc;
   background-color: white;
   border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+
+  &:checked {
+    background-color: #5c3c23;
+    border-color: #5c3c23;
+  }
+
+  &:checked::after {
+    content: '✓';
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(92, 60, 35, 0.3);
+  }
 `;
 
 export const SubmitButton = styled.button`
