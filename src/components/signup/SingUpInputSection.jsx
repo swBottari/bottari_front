@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import * as S from './SignUpInputSection.styles';
 import { useNavigate } from 'react-router-dom';
 import logoImage from '../../assets/images/BottariLogo.svg';
-import { useUserHook } from '../../api/user/user';
 
 function SignUpInputSection() {
   const navigate = useNavigate();
-  const { signUpUser } = useUserHook();
+  //const { signUpUser } = useUserHook();
 
   const [formData, setFormData] = useState({
     id: '',
@@ -49,7 +48,7 @@ function SignUpInputSection() {
       return;
     }
 
-    signUpUser(formData);
+    //signUpUser(formData);
 
     alert('회원가입이 완료되었습니다.');
     navigate('/');
