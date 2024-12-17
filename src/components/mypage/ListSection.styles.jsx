@@ -46,9 +46,9 @@ export const TableRow = styled.div`
   grid-template-columns: 0.8fr 0.8fr 1.2fr 1fr 1fr 1fr 1fr 0.8fr 1fr;
   border-bottom: 1px solid #ddd;
 
-  &:last-child {
-    border-bottom: none;
-  }
+  //&:last-child {
+  //  border-bottom: none;
+  //}
 `;
 
 export const TableCell = styled.div`
