@@ -6,7 +6,7 @@ import { searchQueryAtom } from '../../recoil/Items/itemsRecoilState';
 // 목데이터 정의
 const mockData = [
   {
-    id: 1,
+    id: 'TRK4848',
     list: [
       {
         id: 1,

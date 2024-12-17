@@ -22,8 +22,9 @@ function LoginInputSection() {
   };
 
   const handleLogin = async () => {
-    const response = await loginUser(formData);
-    console.log(response);
+    localStorage.setItem('userName', '보따리');
+    window.dispatchEvent(new Event('storageChange'));
+    alert('로그인 되었습니다.');
     navigate('/');
   };
 

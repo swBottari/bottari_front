@@ -22,6 +22,9 @@ function NavigationButton({ nav }) {
       case '문의':
         navigate('/inquiry');
         break;
+      case '안내':
+        navigate('/about');
+        break;
       case '로그아웃':
         localStorage.removeItem('userName');
         window.location.reload();
